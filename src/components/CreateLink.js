@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CreateLinkMutation from '../mutations/CreateLinkMutation'
+
 class CreateLink extends Component {
 
   state = {
@@ -40,7 +41,7 @@ class CreateLink extends Component {
 
   _createLink = () => {
     const { description, url } = this.state
-    CreateLinkMutation(description, url, () => console.log(`Mutation completed`))
+    CreateLinkMutation(description, url, () => this.props.history.push('/'))
   }
 
 }
