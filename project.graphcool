@@ -1,5 +1,5 @@
 # project: cjb064yvn1xc60188f9bs6ps2
-# version: 2
+# version: 3
 
 type Link @model {
   id: ID! @isUnique
@@ -22,6 +22,8 @@ type File @model {
 
 type User @model {
   createdAt: DateTime!
+  email: String @isUnique
   id: ID! @isUnique
+  password: String
   updatedAt: DateTime!
 }

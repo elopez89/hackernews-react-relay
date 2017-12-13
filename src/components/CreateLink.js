@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CreateLinkMutation from '../mutations/CreateLinkMutation'
-
+import { getUserIDFromLocalStorage } from '../lib/utils'
 class CreateLink extends Component {
 
   state = {
@@ -40,8 +40,12 @@ class CreateLink extends Component {
   }
 
   _createLink = () => {
+    const postedById = getUserIDFromLocalStorage();
+    if(!postedById){
+      return console.error('No user logged in');
+    }
     const { description, url } = this.state
-    CreateLinkMutation(description, url, () => this.props.history.push('/'))
+    CreateLinkMutation(postedById, description, url, () => this.props.history.push('/'))
   }
 
 }

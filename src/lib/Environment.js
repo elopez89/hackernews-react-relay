@@ -1,4 +1,4 @@
-import  { GRAPHQL_ENDPOINT } from '../constants'
+import  { GRAPHQL_ENDPOINT, GC_AUTH_TOKEN } from '../constants'
 const {
     Environment,
     Network,
@@ -14,7 +14,8 @@ const {
           method: 'POST',
           headers: {
               'content-type': 'application/json',
-              'accept': 'application/json'
+              'accept': 'application/json',
+              'authorization': `Bearer ${localStorage.getItem(GC_AUTH_TOKEN)}`
           },
           body: JSON.stringify({
               query: operation.text,
